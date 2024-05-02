@@ -1,0 +1,24 @@
+import os
+import sys
+import socket
+import threading
+import random
+from random import randint
+
+def serverThread(port):
+    os.system("python server.py " + str(port))
+
+def startApplicationServers(startPort, endPort):
+    i = startPort
+    while i <= endPort:
+        server_list.append(('localhost', i))
+        server_conn.append(0)
+        thread = threading.Thread(target = serverThread, args = (i,))
+        thread.start()
+        i = i + 1
+    if len(server_list) == len(server_conn):
+        print(server_list)
+        print(server_conn)
+
+
+startApplicationServers(6000, 6009)
